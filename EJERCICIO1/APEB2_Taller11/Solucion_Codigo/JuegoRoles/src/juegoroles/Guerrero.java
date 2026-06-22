@@ -13,6 +13,7 @@ public class Guerrero extends Personajes{
     
     private int espada;
     private int escudo;
+  
 
     public Guerrero(int espada, int escudo, int vida, int experiencia) {
         super(vida, experiencia);
@@ -20,8 +21,7 @@ public class Guerrero extends Personajes{
         this.escudo = escudo;
     }
 
-   
-   
+    
 
     public int getEspada() {
         return espada;
@@ -66,7 +66,6 @@ public class Guerrero extends Personajes{
       this. vida= this.vida + escudo;
     }
 
-    
-    
+
     
 }
