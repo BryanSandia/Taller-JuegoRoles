@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package juegoroles;
-
+import java.util.ArrayList;
 
 public abstract class Personajes {
     
@@ -16,6 +16,8 @@ public abstract class Personajes {
     protected int cooldownMax;
     
     
+    protected ArrayList<Objeto> inventario;
+    protected Objeto objetoEquipado;
     
     public abstract void atacar(int vida);
     
@@ -29,6 +31,16 @@ public abstract class Personajes {
         this.cooldown = 0;
         this.cooldownMax = 3;
 
+        this.inventario = new ArrayList<>();
+        this.objetoEquipado = null;
+    }
+    
+    public void agregarObjeto(Objeto obj) {
+        inventario.add(obj);
+    }
+    
+    public boolean removerObjeto(Objeto obj) {
+        return inventario.remove(obj);
     }
     public void usarHabilidadEspecial() {
         
@@ -55,7 +67,46 @@ public abstract class Personajes {
     }
 
 
-    public int getVida() {
+    public ArrayList<Objeto> getInventario() {
+        return inventario;
+    }
+
+    public Objeto getObjetoEquipado() {
+        return objetoEquipado;
+    }
+    
+    public boolean equipar(Objeto obj) {
+        if (inventario.contains(obj)) {
+            desequipar();
+            objetoEquipado = obj;
+            return true;
+        }
+        return false;
+    }
+
+    public void desequipar() {
+        objetoEquipado = null;
+    }
+    
+    public int getAtaqueTotal() {
+        int total = 0;
+        if (objetoEquipado != null && objetoEquipado instanceof Arma) {
+            Arma a = (Arma) objetoEquipado;
+            total += a.getDanio();
+        }
+        return total;
+    }
+    
+    public int getDefensaTotal() {
+        int total = 0;
+        if (objetoEquipado != null && objetoEquipado instanceof Armadura) {
+            Armadura a = (Armadura) objetoEquipado;
+            total += a.getDefensa();
+        }
+        return total;
+    }
+    
+     public int getVida() {
         return vida;
     }
 

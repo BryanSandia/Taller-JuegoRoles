@@ -13,6 +13,7 @@ public class Mago extends Personajes{
     
     private int varita;
     private int hechizo;
+    
 
     public Mago(int varita, int hechizo, int vida, int experiencia) {
         super(vida, experiencia);
@@ -20,14 +21,12 @@ public class Mago extends Personajes{
         this.hechizo = hechizo;
     }
 
-   
-
     public int getVarita() {
         return varita;
     }
 
     public void setVarita(int varita) {
-        this.varita = varita;
+        this.varita = varita + getAtaqueTotal();
     }
 
     public int getHechizo() {
@@ -35,7 +34,7 @@ public class Mago extends Personajes{
     }
 
     public void setHechizo(int hechizo) {
-        this.hechizo = hechizo;
+        this.hechizo = hechizo + getDefensaTotal();
     }
 
     public int getVida() {

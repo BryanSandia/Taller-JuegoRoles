@@ -27,7 +27,7 @@ public class Arquero extends Personajes{
     }
 
     public void setFlecha(int flecha) {
-        this.flecha = flecha;
+        this.flecha = flecha + getAtaqueTotal();
     }
 
     public int getArco() {
@@ -35,7 +35,7 @@ public class Arquero extends Personajes{
     }
 
     public void setArco(int arco) {
-        this.arco = arco;
+        this.arco = arco + getDefensaTotal();
     }
 
     public int getVida() {

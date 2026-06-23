@@ -21,14 +21,12 @@ public class Guerrero extends Personajes{
         this.escudo = escudo;
     }
 
-    
-
     public int getEspada() {
         return espada;
     }
 
     public void setEspada(int espada) {
-        this.espada = espada;
+        this.espada = espada + getAtaqueTotal();
     }
 
     public int getEscudo() {
@@ -36,7 +34,7 @@ public class Guerrero extends Personajes{
     }
 
     public void setEscudo(int escudo) {
-        this.escudo = escudo;
+        this.escudo = escudo + getDefensaTotal();
     }
 
     public int getVida() {
