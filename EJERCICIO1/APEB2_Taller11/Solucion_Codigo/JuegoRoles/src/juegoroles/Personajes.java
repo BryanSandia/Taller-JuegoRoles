@@ -11,6 +11,10 @@ public abstract class Personajes {
     protected int vida;
     protected int experiencia;
     protected String estado;
+    protected int energia;
+    protected int cooldown;
+    protected int cooldownMax;
+    
     
     protected ArrayList<Objeto> inventario;
     protected Objeto objetoEquipado;
@@ -23,6 +27,10 @@ public abstract class Personajes {
         this.vida = vida;
         this.experiencia = experiencia;
         this.estado = "";
+        this.energia = 100;
+        this.cooldown = 0;
+        this.cooldownMax = 3;
+
         this.inventario = new ArrayList<>();
         this.objetoEquipado = null;
     }
@@ -34,6 +42,30 @@ public abstract class Personajes {
     public boolean removerObjeto(Objeto obj) {
         return inventario.remove(obj);
     }
+    public void usarHabilidadEspecial() {
+        
+        if (energia < 20) {
+            System.out.println("No hay suficiente energía ");
+            return;
+        }
+        
+        if (cooldown > 0) {
+            System.out.println("Habilidad en cooldown: " + cooldown);
+            return;
+        }
+
+        System.out.println("Usa habilidad especial ");
+
+        energia = energia - 20;
+        cooldown = cooldownMax;
+    }
+     
+      public void reducirCooldown() {
+        if (cooldown > 0) {
+            cooldown--;
+        }
+    }
+
 
     public ArrayList<Objeto> getInventario() {
         return inventario;
